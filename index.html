@@ -99,7 +99,7 @@ section{position:relative}
 .spaces{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:56px}
 .space{position:relative;border-radius:var(--r);overflow:hidden;min-height:420px;isolation:isolate;cursor:pointer;transform-style:preserve-3d}
 .space:nth-child(1){grid-column:span 7}.space:nth-child(2){grid-column:span 5}
-.space:nth-child(3){grid-column:span 5}.space:nth-child(4){grid-column:span 7}
+.space:nth-child(3){grid-column:span 12;min-height:360px}
 .space img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
 .space:hover img{transform:scale(1.07)}
 .space::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0b0b0c00 35%,#0b0b0cf0 100%)}
@@ -119,8 +119,8 @@ section{position:relative}
 .pola{position:absolute;background:#fff;padding:12px 12px 52px;border-radius:6px;box-shadow:0 30px 60px -25px #3b2a1188,0 0 0 1px #0000000a;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .pola img{width:100%;height:100%;object-fit:cover;border-radius:2px}
 .pola span{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--script);font-weight:700;font-size:1.45rem;color:#333}
-.pola.a{width:56%;height:78%;left:0;top:6%;transform:rotate(-6deg)}
-.pola.b{width:50%;height:66%;right:2%;top:0;transform:rotate(5deg)}
+.pola.a{width:58%;height:82%;left:0;top:8%;transform:rotate(-6deg)}
+.pola.b{width:52%;height:74%;right:2%;top:0;transform:rotate(5deg)}
 .pola.c{width:46%;height:56%;right:12%;bottom:0;transform:rotate(-2deg)}
 .polas:hover .pola.a{transform:rotate(-8deg) translateX(-10px)}
 .polas:hover .pola.b{transform:rotate(7deg) translateY(-10px)}
@@ -146,9 +146,9 @@ section{position:relative}
 .lights span{padding:10px 16px;border-radius:999px;border:1px solid var(--line);font-weight:600;font-size:.9rem;background:#ffffff08}
 
 /* Temáticas */
-.themes{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:56px var(--gut) 20px;margin:0 calc(var(--gut)*-1);scrollbar-width:none}
+.themes{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:48px 0 0;margin:0;scrollbar-width:none}
 .themes::-webkit-scrollbar{display:none}
-.theme{flex:0 0 clamp(250px,26vw,320px);aspect-ratio:3/4.2;border-radius:var(--r);overflow:hidden;position:relative;scroll-snap-align:start;isolation:isolate;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.theme{aspect-ratio:3/4.2;border-radius:var(--r);overflow:hidden;position:relative;scroll-snap-align:start;isolation:isolate;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .theme:hover{transform:translateY(-8px) rotate(-1deg)}
 .theme img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .theme::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0000 45%,#000d)}
@@ -239,6 +239,10 @@ footer .demo a{text-decoration:underline}
   .chefs-grid,.pista-grid,.book-grid{grid-template-columns:1fr}
   .polas{order:-1;height:430px}
   .stack{height:440px}
+  .themes{grid-template-columns:1fr 1fr;gap:12px}
+  .theme b{font-size:1.45rem;left:14px;bottom:12px}
+  .theme small{font-size:1.05rem;left:12px;top:12px}
+  .theme.yours b{font-size:1.4rem}
   .cancha::before{background:linear-gradient(180deg,#0b0b0c55 0%,#0b0b0ce6 55%,#0b0b0c 100%)}
   .cancha{align-items:flex-end;padding-bottom:60px}
   .fab{display:none}
@@ -270,7 +274,6 @@ footer .demo a{text-decoration:underline}
       <li><a href="#espacios">El lugar</a></li>
       <li><a href="#chefs">Mini chefs</a></li>
       <li><a href="#tematicas">Temáticas</a></li>
-      <li><a href="#galeria">Galería</a></li>
       <li><a href="#fecha">Contacto</a></li>
     </ul>
     <a href="#fecha" class="btn btn-cream">Consultá tu fecha</a>
@@ -299,23 +302,17 @@ footer .demo a{text-decoration:underline}
     <div class="hero-side reveal in d3">
       <span class="chip"><span class="stars">★★★★★</span><b>4,9</b> · 139 reseñas en Google</span>
       <span class="chip">📍 Alsina 832 · Burzaco</span>
-      <span class="chip">🎈 Cumpleaños infantiles</span>
     </div>
   </div>
   <div class="scroll-hint">SCROLL<i></i></div>
 </section>
-
-<div class="marquee" aria-hidden="true"><div class="track">
-  <span>Cumpleaños infantiles</span><span>Pista con luces</span><span>Canchita de fútbol</span><span>Mini chefs</span><span>Temáticas a elección</span><span>Pérgola al aire libre</span><span>Burzaco</span>
-  <span>Cumpleaños infantiles</span><span>Pista con luces</span><span>Canchita de fútbol</span><span>Mini chefs</span><span>Temáticas a elección</span><span>Pérgola al aire libre</span><span>Burzaco</span>
-</div></div>
 
 <!-- ESPACIOS -->
 <section class="pad" id="espacios">
   <div class="wrap">
     <span class="eyebrow reveal">El lugar</span>
     <h2 class="h2 reveal d1">Un lugar, <span class="s">mil aventuras.</span></h2>
-    <p class="lead reveal d2">Adentro y afuera, para correr, jugar, bailar y cocinar. Cada rincón está pensado para que los chicos la pasen increíble y los grandes estén tranquilos.</p>
+    <p class="lead reveal d2">Adentro y afuera: para bailar, correr y disfrutar.</p>
     <div class="spaces">
       <article class="space reveal" data-tilt>
         <img src="img/pista-azul.jpg" alt="Salón con pista de baile y pantalla" loading="lazy">
@@ -332,11 +329,6 @@ footer .demo a{text-decoration:underline}
         <span class="tag">Al aire libre</span>
         <div class="tx"><span class="n">03</span><h3>Pérgola y deck</h3><p>Un espacio a la sombra para charlar, compartir y mirar los partidos de la canchita.</p></div>
       </article>
-      <article class="space reveal d1" data-tilt>
-        <img src="img/salon-juegos.jpg" alt="Animación y juegos en el salón" loading="lazy">
-        <span class="tag">Animación</span>
-        <div class="tx"><span class="n">04</span><h3>Juegos y animación</h3><p>Circuitos, carreras, aros y juegos en grupo para que nadie se quede afuera.</p></div>
-      </article>
     </div>
   </div>
 </section>
@@ -347,18 +339,12 @@ footer .demo a{text-decoration:underline}
     <div class="polas reveal">
       <figure class="pola a"><img src="img/chefs-frozen-m.jpg" alt="Cumpleañeras con delantal sosteniendo sus pizzas"><span>¡Mis pizzas! 🍕</span></figure>
       <figure class="pola b"><img src="img/chefs-futbol-m.jpg" alt="Chicos con delantales de Let's GO! y sus pizzas"><span>Chefs por un día</span></figure>
-      <figure class="pola c"><img src="img/chefs-hotwheels-m.jpg" alt="Chicos cocineros en el cumple de Hot Wheels"><span>¡Salieron perfectas!</span></figure>
     </div>
     <div>
       <span class="eyebrow reveal">Nuestro diferencial</span>
       <h2 class="h2 reveal d1">Mini <span class="s">chefs.</span></h2>
-      <p class="lead reveal d2">En Let's GO! los chicos no solo juegan: se ponen el delantal y preparan sus propias pizzas. Un momento que les encanta y que queda en todas las fotos.</p>
-      <ol class="steps reveal d3">
-        <li><b>1</b>Se ponen el delantal de Let's GO! y el gorro de chef.</li>
-        <li><b>2</b>Arman su pizza con sus propias manos.</li>
-        <li><b>3</b>¡A comer lo que cocinaron, y foto con su obra maestra!</li>
-      </ol>
-      <span class="apron reveal d3"><span class="badge-logo"><span class="logo"><span class="l">let's</span><span class="g">GO!</span></span></span>Delantales con nuestra marca, para la foto perfecta</span>
+      <p class="lead reveal d2">Los chicos se ponen el delantal y preparan sus propias pizzas. ¡El momento que más les gusta!</p>
+      <span class="apron reveal d3"><span class="badge-logo"><span class="logo"><span class="l">let's</span><span class="g">GO!</span></span></span>Con delantales y gorro de chef</span>
     </div>
   </div>
 </section>
@@ -369,13 +355,10 @@ footer .demo a{text-decoration:underline}
     <div>
       <span class="eyebrow reveal" style="color:#ff8fcf">Que empiece la fiesta</span>
       <h2 class="neon reveal d1">Luces,<br><span class="g2">música</span><br>y acción.</h2>
-      <p class="lead reveal d2">Cuando se apagan las luces, la pista se transforma: colores, láser y la música que eligen los chicos. El momento más esperado del cumple.</p>
-      <div class="lights reveal d3"><span>💡 Luces y láser</span><span>🔊 Sonido</span><span>📺 Pantalla</span><span>🕺 Pista de baile</span></div>
+      <p class="lead reveal d2">Luces de colores, láser y la música que eligen los chicos.</p>
     </div>
     <div class="stack reveal d1">
-      <figure class="f1"><img src="img/pista-luces.jpg" alt="Pista con luces verdes y rojas"></figure>
-      <figure class="f2"><img src="img/pista-laser.jpg" alt="Láser y luces sobre la pista"></figure>
-      <figure class="f3"><img src="img/pista-verde-m.jpg" alt="Chicos bailando con luces verdes"></figure>
+      <figure class="f2" style="inset:0"><img src="img/pista-laser.jpg" alt="Láser y luces sobre la pista"></figure>
     </div>
   </div>
 </section>
@@ -385,70 +368,12 @@ footer .demo a{text-decoration:underline}
   <div class="wrap">
     <span class="eyebrow reveal">Temáticas</span>
     <h2 class="h2 reveal d1">Vos elegís, <span class="s">nosotros lo hacemos realidad.</span></h2>
-    <p class="lead reveal d2">Princesas, autos, el club del corazón o su personaje favorito: ambientamos el salón con la temática que sueña el cumpleañero.</p>
+    <p class="lead reveal d2">Ambientamos el salón con lo que sueña el cumpleañero.</p>
     <div class="themes" id="themes">
       <div class="theme"><img src="img/frozen-m.jpg" alt="Cumpleañera con vestido de Frozen" loading="lazy"><small>princesas</small><b>Frozen</b></div>
       <div class="theme"><img src="img/hotwheels-torta-m.jpg" alt="Cumple temático de Hot Wheels" loading="lazy"><small>a toda velocidad</small><b>Hot Wheels</b></div>
-      <div class="theme"><img src="img/argentina-m.jpg" alt="Cumpleañero con la camiseta de Argentina" loading="lazy"><small>¡vamos!</small><b>Argentina</b></div>
       <div class="theme"><img src="img/boca-m.jpg" alt="Cumpleañero con temática de Boca" loading="lazy"><small>el club del corazón</small><b>Fútbol</b></div>
-      <div class="theme"><img src="img/stitch-m.jpg" alt="Cumpleañera con temática de Stitch" loading="lazy"><small>personajes</small><b>Stitch</b></div>
       <div class="theme yours"><div><div class="plus">+</div><b>La que quieras</b><p>Contanos qué le gusta y armamos la ambientación a medida.</p></div></div>
-    </div>
-    <div class="drag">← Deslizá para ver más →</div>
-  </div>
-</section>
-
-<!-- CANCHA -->
-<section class="cancha" id="cancha">
-  <img src="img/cancha-red.jpg" alt="Canchita de fútbol con red y el logo de Let's GO!" loading="lazy" data-parallax>
-  <div class="wrap">
-    <div class="card">
-      <span class="eyebrow reveal">Al aire libre</span>
-      <h2 class="h2 reveal d1">Para los que <span class="s">no paran de correr.</span></h2>
-      <p class="lead reveal d2" style="color:#d9d3c7">Una canchita de césped sintético con red perimetral, ideal para el picadito, los juegos en equipo y las carreras de postas.</p>
-      <ul class="reveal d3">
-        <li><span>⚽</span>Fútbol y juegos</li>
-        <li><span>🌳</span>Al aire libre</li>
-        <li><span>🥅</span>Red perimetral</li>
-        <li><span>☀️</span>Pérgola al lado</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- GALERÍA -->
-<section class="pad" id="galeria">
-  <div class="wrap">
-    <span class="eyebrow reveal">Galería</span>
-    <h2 class="h2 reveal d1">Así se vive <span class="s">un cumple Let's GO!</span></h2>
-    <div class="gal" id="gal">
-      <button data-full="img/pista-pantalla.jpg"><img src="img/pista-pantalla-m.jpg" alt="Show en la pantalla y pista" loading="lazy"></button>
-      <button data-full="img/chefs-8.jpg"><img src="img/chefs-8-m.jpg" alt="Cumpleañeras chefs en su cumple de 8" loading="lazy"></button>
-      <button data-full="img/cancha-juegos.jpg"><img src="img/cancha-juegos-m.jpg" alt="Juegos en la canchita" loading="lazy"></button>
-      <button data-full="img/pergola-amigas.jpg"><img src="img/pergola-amigas-m.jpg" alt="Amigas en la pérgola" loading="lazy"></button>
-      <button data-full="img/salon-aros.jpg"><img src="img/salon-aros-m.jpg" alt="Juegos con aros en el salón" loading="lazy"></button>
-      <button data-full="img/chefs-boca.jpg"><img src="img/chefs-boca-m.jpg" alt="Chefs con delantales de Let's GO!" loading="lazy"></button>
-      <button data-full="img/cancha-cielo.jpg"><img src="img/cancha-cielo-m.jpg" alt="Canchita bajo el cielo" loading="lazy"></button>
-      <button data-full="img/pista-show.jpg"><img src="img/pista-show-m.jpg" alt="Baile frente a la pantalla" loading="lazy"></button>
-      <button data-full="img/chefs-stitch.jpg"><img src="img/chefs-stitch-m.jpg" alt="Cumple de Stitch con pizzas" loading="lazy"></button>
-      <button data-full="img/animacion.jpg"><img src="img/animacion-m.jpg" alt="Animación en el salón" loading="lazy"></button>
-      <button data-full="img/nena-brindis.jpg"><img src="img/nena-brindis-m.jpg" alt="Cumpleañera brindando" loading="lazy"></button>
-      <button data-full="img/salon-carrera.jpg"><img src="img/salon-carrera-m.jpg" alt="Carrera de postas en el salón" loading="lazy"></button>
-    </div>
-  </div>
-</section>
-
-<!-- CUMPLES REALES + RATING -->
-<section class="pad" style="padding-top:0">
-  <div class="wrap">
-    <span class="eyebrow reveal">Gracias por elegirnos</span>
-    <h2 class="h2 reveal d1">Cada semana, <span class="s">un cumple nuevo.</span></h2>
-    <div class="cumples reveal d2">
-      <span>Los <b>7 años</b> de Isa</span><span>Lucio festejó sus <b>11</b></span><span>El cumple de <b>Martina</b></span><span>El cumple de <b>Noah</b></span><span>El cumple de <b>Clara</b></span><span>El cumple de <b>Tomi</b></span><span><b>Beni</b> y <b>Charo</b></span><span>El cumple de <b>Mía</b></span><span>El cumple de <b>Brunella</b></span>
-    </div>
-    <div class="rating reveal d3">
-      <span class="big">4,9</span>
-      <div><div class="stars">★★★★★</div><p><b style="color:var(--cream)">139 reseñas en Google</b><br>Las familias de la zona nos recomiendan.</p></div>
     </div>
   </div>
 </section>
@@ -486,9 +411,6 @@ footer .demo a{text-decoration:underline}
         <div class="field"><label for="fChicos">Chicos (aprox.)</label><select id="fChicos"><option>Hasta 20</option><option selected>20 a 35</option><option>35 a 50</option><option>Más de 50</option></select></div>
         <div class="field"><label for="fTema">Temática</label><input id="fTema" placeholder="Ej: Frozen, fútbol…"></div>
       </div>
-      <div class="field"><label>Quiero sumar</label>
-        <div class="pills"><label><input type="checkbox" name="extra" value="Mini chefs (pizzas)" checked><span>🍕 Mini chefs</span></label><label><input type="checkbox" name="extra" value="Canchita"><span>⚽ Canchita</span></label><label><input type="checkbox" name="extra" value="Pista con luces" checked><span>💡 Pista</span></label></div>
-      </div>
       <button class="btn btn-wa" type="submit"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Consultar por WhatsApp</button>
     </form>
   </div>
@@ -509,14 +431,9 @@ footer .demo a{text-decoration:underline}
   <a href="#inicio" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
   <a href="#espacios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10z"/></svg>Lugar</a>
   <a href="#fecha" class="cta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Fecha</a>
-  <a href="#galeria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8.5 6 10 3.5h4L15.5 6"/></svg>Fotos</a>
+  <a href="#tematicas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3 2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg>Temáticas</a>
   <a href="https://wa.me/5491122343131" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>WhatsApp</a>
 </nav>
-
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto ampliada">
-  <button class="x" aria-label="Cerrar">×</button><button class="pv" aria-label="Anterior">‹</button><button class="nx" aria-label="Siguiente">›</button>
-  <img alt="">
-</div>
 
 <script>
 (function(){
@@ -555,16 +472,6 @@ footer .demo a{text-decoration:underline}
   (function loop(){ if(heroOn && !reduce){ cx.clearRect(0,0,W,H); parts.forEach(p=>{ p.y+=p.v; p.x+=Math.sin(p.a)*.6*devicePixelRatio; p.a+=p.s; if(p.y>H+20){p.y=-20;p.x=Math.random()*W;}
       cx.save(); cx.translate(p.x,p.y); cx.rotate(p.a); cx.globalAlpha=.75; cx.fillStyle=p.c; cx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2); cx.restore(); }); }
     requestAnimationFrame(loop); })();
-
-  // Lightbox de la galería
-  const lb=$('#lb'), lbi=lb.querySelector('img'), items=$$('#gal button'); let li=0;
-  const show=i=>{ li=(i+items.length)%items.length; lbi.src=items[li].dataset.full; lbi.alt=items[li].querySelector('img').alt; };
-  items.forEach((b,i)=>b.addEventListener('click',()=>{ show(i); lb.classList.add('open'); }));
-  lb.querySelector('.x').onclick=()=>lb.classList.remove('open');
-  lb.querySelector('.pv').onclick=e=>{e.stopPropagation();show(li-1)};
-  lb.querySelector('.nx').onclick=e=>{e.stopPropagation();show(li+1)};
-  lb.addEventListener('click',e=>{ if(e.target===lb) lb.classList.remove('open'); });
-  addEventListener('keydown',e=>{ if(!lb.classList.contains('open')) return; if(e.key==='Escape') lb.classList.remove('open'); if(e.key==='ArrowLeft') show(li-1); if(e.key==='ArrowRight') show(li+1); });
 
   // Fecha mínima = hoy
   const ff=$('#fFecha'); const hoy=new Date(); ff.min=new Date(hoy.getTime()-hoy.getTimezoneOffset()*6e4).toISOString().slice(0,10);
