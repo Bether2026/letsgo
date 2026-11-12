@@ -244,23 +244,22 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @keyframes leave{to{opacity:0;transform:perspective(1400px) translateZ(-120px) translateY(-10px)}}
 @keyframes enter{from{opacity:0;transform:perspective(1400px) rotateX(7deg) translateY(50px) translateZ(-60px)}to{opacity:1;transform:none}}
 
-/* Puertas (inicio) */
-.doors-sec{padding:clamp(40px,6vw,70px) 0 clamp(90px,10vw,130px)}
-.doors{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
-.door{position:relative;display:block;aspect-ratio:3/4.6;perspective:1100px;border-radius:999px 999px 14px 14px}
-.door .in{position:absolute;inset:0;border-radius:inherit;overflow:hidden;background:#000;box-shadow:0 0 0 5px rgba(255,255,255,.12),0 0 50px -12px var(--c),0 40px 70px -34px #000}
-.door .in img{width:100%;height:100%;object-fit:cover}
-.door .in::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.75))}
-.door .in b{position:absolute;left:0;right:0;bottom:22px;text-align:center;z-index:2;color:#fff;font-family:var(--head);font-weight:600;font-size:1.15rem}
-.door .leaf{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 80%,#fff),var(--c) 55%,color-mix(in srgb,var(--c) 70%,#000));color:var(--tc,var(--ink));
-  transform-origin:0 50%;transform:rotateY(-7deg);transition:transform .8s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18% 12% 12%;
-  box-shadow:inset 0 0 0 10px rgba(255,255,255,.22),inset 0 0 0 11px rgba(0,0,0,.08),18px 0 30px -18px rgba(0,0,0,.6)}
-.door .leaf i{font-style:normal;font-family:var(--head);font-weight:700;font-size:clamp(2.6rem,4.4vw,4rem);line-height:1;opacity:.9}
-.door .leaf strong{font-family:var(--head);font-weight:700;font-size:clamp(1.2rem,1.8vw,1.6rem);line-height:1.05;margin-top:10px}
-.door .leaf small{font-weight:700;font-size:.9rem;opacity:.8;margin-top:8px;line-height:1.3}
-.door .leaf em{position:absolute;right:11%;top:56%;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 3px 6px rgba(0,0,0,.35),inset 0 -3px 4px rgba(0,0,0,.2)}
-.door:hover .leaf,.door.ajar .leaf{transform:rotateY(-62deg)}
-.door.open .leaf{transform:rotateY(-104deg)}
+/* Accesos a las secciones (inicio): tarjetas 3D; en el celu, carrusel que se desliza con giro */
+.spots-sec{padding:clamp(40px,6vw,70px) 0 clamp(90px,10vw,130px)}
+.spots{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.spot{position:relative;display:block;aspect-ratio:3/4.4;border-radius:28px;overflow:hidden;background:#000;transform-style:preserve-3d;will-change:transform;
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 55%,transparent),0 0 46px -12px var(--c),0 40px 70px -34px #000}
+.spot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.spot:hover img{transform:scale(1.08)}
+.spot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,9,32,0) 30%,color-mix(in srgb,var(--c) 28%,#0d0920) 74%,#0d0920 100%)}
+.sp-n{position:absolute;top:14px;left:14px;z-index:2;font-family:var(--head);font-weight:700;font-size:.95rem;padding:6px 13px;border-radius:999px;background:var(--c);color:var(--tc,var(--ink));box-shadow:0 4px 0 color-mix(in srgb,var(--c) 55%,#000)}
+.sp-t{position:absolute;left:18px;right:70px;bottom:20px;z-index:2}
+.sp-t strong{display:block;font-family:var(--head);font-weight:700;font-size:clamp(1.25rem,1.7vw,1.55rem);line-height:1.05}
+.sp-t small{display:block;margin-top:5px;font-weight:700;font-size:.88rem;color:#d9d2f3;line-height:1.3}
+.sp-go{position:absolute;right:16px;bottom:20px;z-index:2;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;font-weight:700;background:var(--c);color:var(--tc,var(--ink));box-shadow:0 4px 0 color-mix(in srgb,var(--c) 55%,#000),0 0 22px -4px var(--c);transition:transform .25s}
+.spot:hover .sp-go{transform:translateX(4px)}
+.spot .glare{z-index:3}
+.sp-dots{display:none}
 
 /* Anterior / siguiente */
 .pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 max(var(--gut),calc((100vw - 1180px)/2 + var(--gut))) clamp(60px,7vw,90px)}
@@ -297,8 +296,14 @@ footer .demo a{text-decoration:underline}
   .chefs .sec-head{text-align:center}
   .chefs .sec-head[data-k]::before{left:50%;transform:translateX(-50%)}
   .chefs .p3d{max-width:420px;margin:0 auto;width:calc(100% - 30px)}
-  .doors{grid-template-columns:1fr 1fr;gap:16px}
-  .door:last-child{grid-column:span 2;aspect-ratio:3/2.1;border-radius:28px}
+  .spots{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:24px calc(50vw - min(33vw,135px)) 34px;margin:0 calc(-1*var(--gut))}
+  .spots::-webkit-scrollbar{display:none}
+  .spot{flex:0 0 min(66vw,270px);aspect-ratio:3/4.2;scroll-snap-align:center;border-radius:30px}
+  .sp-t strong{font-size:1.6rem}
+  .sp-go{width:48px;height:48px}
+  .sp-dots{display:flex;justify-content:center;gap:8px;margin-top:2px}
+  .sp-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s}
+  .sp-dots i.on{width:24px;background:var(--c,#fff);box-shadow:0 0 12px var(--c,#fff)}
   .view.page{padding-top:84px}
   .pager a{padding:16px 18px}.pager b{font-size:1.05rem}
   .wa-float{display:none}
@@ -363,16 +368,17 @@ footer .demo a{text-decoration:underline}
   </div>
 </section>
 
-<section class="doors-sec" id="puertas">
+<section class="spots-sec" id="puertas">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num"><i>↓</i>Elegí una puerta</span><h2 class="h2">¿A dónde <em>vamos?</em></h2><p>Cada puerta te lleva a un rincón de Let's GO!</p></div>
-    <div class="doors">
-      <a class="door rv" href="#/lugar" style="--c:#3ec5ff"><span class="in"><img src="img/cancha-mural.jpg" alt="" loading="lazy"><b>Entrar →</b></span><span class="leaf"><i>01</i><strong>El lugar</strong><small>Salón, canchita y pérgola</small><em></em></span></a>
-      <a class="door rv" href="#/chefs" style="--c:#ffc23d"><span class="in"><img src="img/chefs-boca-m.jpg" alt="" loading="lazy"><b>Entrar →</b></span><span class="leaf"><i>02</i><strong>Mini chefs</strong><small>Delantal y panchos</small><em></em></span></a>
-      <a class="door rv" href="#/pista" style="--c:#8b5cff;--tc:#fff"><span class="in"><img src="img/pista-luces.jpg" alt="" loading="lazy"><b>Entrar →</b></span><span class="leaf"><i>03</i><strong>La pista</strong><small>Luces, música y baile</small><em></em></span></a>
-      <a class="door rv" href="#/temas" style="--c:#2fe0a0"><span class="in"><img src="img/frozen-m.jpg" alt="" loading="lazy"><b>Entrar →</b></span><span class="leaf"><i>04</i><strong>Temáticas</strong><small>Vos elegís</small><em></em></span></a>
-      <a class="door rv" href="#/fecha" style="--c:#ff4fa0;--tc:#fff"><span class="in"><img src="img/pista-azul.jpg" alt="" loading="lazy"><b>Entrar →</b></span><span class="leaf"><i>05</i><strong>Reservas</strong><small>Consultá tu fecha</small><em></em></span></a>
+    <div class="sec-head rv"><span class="num"><i>↓</i>Conocé Let's GO!</span><h2 class="h2">¿A dónde <em>vamos?</em></h2><p>Deslizá y tocá para entrar a cada rincón.</p></div>
+    <div class="spots" id="spots">
+      <a class="spot" href="#/lugar" style="--c:#3ec5ff"><img src="img/cancha-mural.jpg" alt="" loading="lazy"><span class="sp-n">01</span><span class="sp-t"><strong>El lugar</strong><small>Salón, canchita y pérgola</small></span><span class="sp-go">→</span><span class="glare"></span></a>
+      <a class="spot" href="#/chefs" style="--c:#ffc23d"><img src="img/chefs-boca-m.jpg" alt="" loading="lazy"><span class="sp-n">02</span><span class="sp-t"><strong>Mini chefs</strong><small>Delantal y panchos</small></span><span class="sp-go">→</span><span class="glare"></span></a>
+      <a class="spot" href="#/pista" style="--c:#8b5cff;--tc:#fff"><img src="img/pista-luces.jpg" alt="" loading="lazy"><span class="sp-n">03</span><span class="sp-t"><strong>La pista</strong><small>Luces, música y baile</small></span><span class="sp-go">→</span><span class="glare"></span></a>
+      <a class="spot" href="#/temas" style="--c:#2fe0a0"><img src="img/frozen-m.jpg" alt="" loading="lazy"><span class="sp-n">04</span><span class="sp-t"><strong>Temáticas</strong><small>Vos elegís</small></span><span class="sp-go">→</span><span class="glare"></span></a>
+      <a class="spot" href="#/fecha" style="--c:#ff4fa0;--tc:#fff"><img src="img/pista-azul.jpg" alt="" loading="lazy"><span class="sp-n">05</span><span class="sp-t"><strong>Reservas</strong><small>Consultá tu fecha</small></span><span class="sp-go">→</span><span class="glare"></span></a>
     </div>
+    <div class="sp-dots" id="spDots"></div>
   </div>
 </section>
 </div>
@@ -613,11 +619,21 @@ footer .demo a{text-decoration:underline}
   sheet.addEventListener('click',e=>{ if(e.target===sheet) closeSheet(); });
   addEventListener('keydown',e=>{ if(e.key==='Escape') closeSheet(); });
 
-  // Puertas: en el celu se entreabren solas; al tocarlas se abren del todo y entrás
-  const doors=$$('.door');
-  if(!canHover){ const dio=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('ajar',e.isIntersecting)),{threshold:.6}); doors.forEach(d=>dio.observe(d)); }
-  doors.forEach(d=>d.addEventListener('click',e=>{ if(reduce) return; e.preventDefault(); d.classList.add('open');
-    setTimeout(()=>{ location.hash=d.getAttribute('href'); setTimeout(()=>d.classList.remove('open'),900); },420); }));
+  // Accesos: en la compu se inclinan con el mouse; en el celu el carrusel gira en 3D al deslizar
+  const spots=$$('.spot'), sbox=$('#spots'), sdots=$('#spDots');
+  if(canHover && !reduce) spots.forEach(s=>tilt(s, s, 10));
+  spots.forEach(s=>{ const d=document.createElement('i'); d.style.setProperty('--c',s.style.getPropertyValue('--c')); sdots.appendChild(d); });
+  let sraf=null;
+  const spin=()=>{ sraf=null; if(getComputedStyle(sdots).display==='none') return;
+    const mid=sbox.scrollLeft+sbox.clientWidth/2; let best=0, bd=1e9;
+    spots.forEach((s,i)=>{ const d=(s.offsetLeft+s.offsetWidth/2-mid)/s.offsetWidth, a=Math.min(Math.abs(d),1.4);
+      if(Math.abs(d)<bd){ bd=Math.abs(d); best=i; }
+      if(!reduce) s.style.transform=`perspective(900px) translateX(${(-Math.max(-1.4,Math.min(1.4,d))*24).toFixed(1)}%) rotateY(${(-Math.max(-1.4,Math.min(1.4,d))*30).toFixed(1)}deg) scale(${(1-a*.13).toFixed(3)})`;
+      s.style.opacity=(1-a*.35).toFixed(2); s.style.zIndex=10-Math.round(a*4); });
+    [...sdots.children].forEach((d,i)=>d.classList.toggle('on',i===best)); };
+  const qspin=()=>{ if(!sraf) sraf=requestAnimationFrame(spin); };
+  sbox.addEventListener('scroll',qspin,{passive:true}); addEventListener('resize',qspin);
+  setTimeout(qspin,50); setTimeout(qspin,1200);
   $('#verPuertas').onclick=()=>$('#puertas').scrollIntoView({behavior:'smooth'});
 
   // Fecha mínima: hoy
